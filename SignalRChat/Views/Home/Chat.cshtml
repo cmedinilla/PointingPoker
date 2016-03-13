@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Chat";
+}
+<h1></h1>
+@section scripts {
+    <!--Script references. -->
+    <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
+    <!--Reference the SignalR library. -->
+    <script src="~/Scripts/jquery.signalR-2.0.3.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-signalr-hub.min.js"></script>
+
+    <script src="~/app/app.js"></script>
+    <script src="~/app/services.js"></script>
+    <script src="~/app/controllers.js"></script>
+    <script>
+        var roomId = '@ViewBag.roomId';
+    </script>
+    <style>
+        .voteHidden { 
+            background-color: #330;
+            color: #330;
+            width: 40px;
+        }
+    </style>
+}
+
+<div ng-app="angularServiceDashboard">
+    <div ng-controller="PerformanceDataController">
+
+        <div ng-show="isJoinSectionVisible">
+            <div class="row">
+                <div class="col-md-1"> Name: </div>
+                <div class="col-md-4">
+                    <input data-ng-model="name" class="form-control pull-left"/>
+                </div>
+                <div class="col-md-4">
+                    <input type="button" class="btn btn-primary pull-left" ng-click="join()" value="Join">
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+
+        <div ng-hide="isJoinSectionVisible">
+            <div class="row">
+                Session Id: {{sessionId}}
+            </div>
+            <br/>
+            <h4>
+                <b>{{name}}</b>
+            </h4>
+            <div class="row">
+                <div class="col-md-1" ng-repeat="point in points">
+                    <input type="button" value="{{point}} points" class="voteButton btn btn-info btn-mini btn-width" ng-click="addMyVote(point)">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="button" class="btn btn-primary" value="Clear Votes" ng-click="clearVotes()"/>
+                </div>
+                <div class="col-md-3">
+                    <input type="button" class="btn btn-primary" value="Show Votes" ng-click="showVotes()"/>
+                </div>
+                <div class="col-md-6">
+                    <label></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Player</label>
+                </div>
+                <div class="col-md-6">
+                    <label>Score</label>
+                </div>
+            </div>
+            <div ng-repeat="item in roomMembers">
+
+                <div class="col-md-6">
+                    <label>{{item.name}}</label>
+                </div>
+                <div class="col-md-6">
+                    <div ng-class="{voteHidden : item.hideScore}">
+                        <label>{{item.score}}</label>
+                    </div>
+                </div>
+                <div class="gap"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>

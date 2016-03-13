@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using (Html.BeginForm("Index", "Home", FormMethod.Get, new { id = "loginForm" }))
+{
+    <div>
+        Room ID
+        <input name="roomId"/>
+        <input type="submit" value="Join" />
+    </div>
+}

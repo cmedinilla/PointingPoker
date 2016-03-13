@@ -1,0 +1,18 @@
+﻿@model SignalRChat.Models.JoinModel
+@{
+    ViewBag.Title = "join";
+}
+
+<h2>join</h2>
+ 
+    @using (Html.BeginForm("join", "Account", FormMethod.Post, new { id = "loginForm" }))
+    {
+        <div>
+            RoomId:
+            @Html.TextBoxFor(x => x.RoomId)
+            Nmae: @Html.TextBoxFor(x => x.Name)
+
+            <input type="submit" value="Join"/>
+        </div>
+    }
+ 
