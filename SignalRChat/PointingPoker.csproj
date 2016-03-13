@@ -133,9 +133,7 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -166,6 +164,10 @@
     <Content Include="app\directives.js" />
     <Content Include="app\services.js" />
     <Content Include="app\views\PointingRoom.html" />
+    <Content Include="App_Data\SignalRChat.Models.UserContext.mdf" />
+    <Content Include="App_Data\SignalRChat.Models.UserContext_log.ldf">
+      <DependentUpon>SignalRChat.Models.UserContext.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
